@@ -28,14 +28,14 @@
           class="buttonStyle"
           :disabled="!lights.some((light) => !light.isSelected)"
         >
-          All lights on
+          All Lights On
         </button>
         <button
           @click="allOff"
           class="buttonStyle"
           :disabled="!lights.some((light) => light.isSelected)"
         >
-          All lights off
+          All Lights Off
         </button>
         <button @click="addLights" class="buttonStyle">Add 10 Lights</button>
       </div>
