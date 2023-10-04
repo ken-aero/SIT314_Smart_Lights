@@ -56,7 +56,6 @@ const app = Vue.createApp({
     toggleSelected(e, val) {
       this.newLight = ''
       this.errorMsg = ''
-      console.log(this.lights)
       this.lights[val].icon =
         this.lights[val].icon === 'fa-solid fa-lightbulb'
           ? 'fa-solid fa-lightbulb-slash'
