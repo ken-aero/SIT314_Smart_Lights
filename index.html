@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIT120 2.1C</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src="https://kit.fontawesome.com/057987946c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <div class="light">
+        <input
+          type="number"
+          class="lightActions"
+          v-model="newLight"
+          placeholder="Enter light number"
+        />
+        <button @click="submit" class="buttonStyle" :disabled="newLight === ''">
+          Turn On Light
+        </button>
+        <button @click="offLight" class="buttonStyle" :disabled="newLight === ''">
+          Turn Off Light
+        </button>
+        <button
+          @click="allOn"
+          class="buttonStyle"
+          :disabled="!lights.some((light) => !light.isSelected)"
+        >
+          All lights on
+        </button>
+        <button
+          @click="allOff"
+          class="buttonStyle"
+          :disabled="!lights.some((light) => light.isSelected)"
+        >
+          All lights off
+        </button>
+        <button @click="addLights" class="buttonStyle">Add 10 Lights</button>
+      </div>
+      <div v-if="errorMsg" class="light error">{{ errorMsg }}</div>
+      <div class="container">
+        <div
+          v-for="(light, index) in lights"
+          class="wrapper"
+          :key="index"
+          @click="toggleSelected($event, index)"
+        >
+          <div :class="light.isSelected ? 'selected' : '' "><i :class="light.icon"></i></div>
+          <div>{{ index + 1 }}</div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
